@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.1.10"
-    kotlin("plugin.spring") version "2.1.10"
-    id("org.springframework.boot") version "3.3.12"
+    kotlin("jvm") version "2.4.0"
+    kotlin("plugin.spring") version "1.9.25"
+    id("org.springframework.boot") version "3.5.16"
     id("io.spring.dependency-management") version "1.1.7"
-    kotlin("plugin.jpa") version "2.1.10"
+    kotlin("plugin.jpa") version "2.4.0"
 }
 
 group = "moe.kurenai.multidbdemo"
@@ -11,7 +11,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -28,7 +28,10 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.hibernate.orm:hibernate-hikaricp")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("com.atomikos:transactions-spring-boot3-starter:6.0.1")
+    implementation("com.atomikos:transactions-jta:6.0.1:jakarta")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
